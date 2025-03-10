@@ -1,0 +1,197 @@
+/* Resetando margens e padding de todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilizando o fundo e a página */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #70c5ce, #3f8f99); /* Gradiente de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    flex-direction: column; /* Adicionamos isso para empilhar os elementos (título e jogo) verticalmente */
+}
+
+/* Estilo do título */
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra no título */
+    animation: fadeInText 2s ease-out;
+    /* Animação de entrada */
+}
+
+/* Animação de fade-in para o título */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container do jogo */
+.game-container {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    background: #8bc34a;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 5px solid #4caf50;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Garante que o título fique separado do jogo */
+}
+
+/* Estilo do céu (fundo azul) */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #64b5f6; /* Céu azul */
+    z-index: -1; /* Coloca atrás dos outros elementos */
+}
+
+/* Estilo das árvores */
+.trees {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url('https://www.transparenttextures.com/patterns/wood-pattern.png') repeat-x;
+    background-size: 100px 80px;
+    z-index: -2;
+}
+
+/* Estilo da Gabi (personagem) */
+.gabi {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJk8v210muQzrdhriFHwkX8kEjUCjoQWcm5Q&s') no-repeat center/cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilo do nome "GABI" dentro do personagem */
+.gabi-name {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Verdana', sans-serif;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo do obstáculo */
+.obstacle {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    background: #f44336; /* Cor vermelha para o obstáculo */
+    border-radius: 5px;
+    animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: 800px;
+    }
+}
+
+/* Animação do salto da Gabi */
+.jump {
+    animation: jump 0.5s ease-out;
+}
+
+@keyframes jump {
+    0% {
+        bottom: 10px;
+    }
+
+    50% {
+        bottom: 100px;
+    }
+
+    100% {
+        bottom: 10px;
+    }
+}
+
+/* Estilo do botão de reiniciar */
+.restart-btn {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Inicialmente escondido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.restart-btn:hover {
+    background-color: #45a049;
+}
+
+/* Estilo do contador de trajetória */
+.trajectory-counter {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo da mensagem de parabéns */
+.congratulations-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50;
+    color: white;
+    font-size: 2rem;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none; /* Inicialmente escondido */
+}
